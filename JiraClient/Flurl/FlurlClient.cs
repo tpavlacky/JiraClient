@@ -33,7 +33,6 @@ namespace JiraClient.Flurl
       var endpointAddress = _serverUri + _endpointProvider.GetAddAttachmentEndpoint(issueID);
       var response = await 
         CreateRequest(endpointAddress)
-        //.WithHeader("Content-Type", "multipart/form-data")
         .PostMultipartAsync(mp => mp.AddFile("file", attachmentPath));
 
       return new Response(response.ResponseMessage.StatusCode, await response.ResponseMessage.Content.ReadAsStringAsync());
